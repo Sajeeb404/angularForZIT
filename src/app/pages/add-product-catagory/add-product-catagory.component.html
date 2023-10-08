@@ -33,8 +33,9 @@
         <td>Centro comercial Moctezuma</td>
         <td>Francisco Chang</td>
         <td>
-          <button>Edit</button>
-          <button>Delete</button>
+          <button > <i class="fas fa-edit"></i></button>
+          <button><i class="fa fa-eye" aria-hidden="true"></i></button>
+          <button> <i class="fa fa-trash" aria-hidden="true"></i></button>
         </td>
       </tr>
     </table>
@@ -71,47 +72,45 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" for="userfullnameid">Full Name</label>
+                <label class="form-label" for="">Product Category Name <span class="requiredSign" >*</span></label>
                 <input
                   type="text"
                   class="form-control shadow-none"
-                  name="userfullname"
-                  id="userfullnameid"
+                  name=""
+                  id=""
                 />
               </div>
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" for="usernameid"> User Name </label>
+                <label class="form-label" for=""> Product Category Name BN <span class="requiredSign" >*</span></label>
                 <input
                   type="text"
                   class="form-control shadow-none"
-                  name="username"
-                  id="usernameid"
+                  name=""
+                  id=""
                 />
               </div>
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" for="emailid">Email Address</label>
+                <label class="form-label" for="">Sequence Number <span class="requiredSign" >*</span></label>
                 <input
                   type="email"
                   class="form-control shadow-none"
-                  name="email"
-                  id="emailid"
+                  name=""
+                  id=""
                 />
               </div>
-              <div class="col-md-6 ps-0">
-                <label class="form-label" for="passwordid">Password</label>
-                <input
-                  type="text"
-                  class="form-control shadow-none"
-                  name="password"
-                  id="passwordid"
-                />
-              </div>
+
             </div>
           </div>
           <div class="text-center my-1">
-            <button type="submit" class="btn btn-dark shadow-none">
-              Update
+
+            <button type="submit" class="btn btn-dark shadow-none" style="float: left; margin-bottom: 10px;">
+              Reset
             </button>
+
+            <button type="submit" class="btn btn-dark shadow-none" style="float: right; margin-bottom: 10px;">
+              Submit
+            </button>
+
           </div>
         </div>
       </form>

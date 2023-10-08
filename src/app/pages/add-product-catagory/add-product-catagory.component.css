@@ -19,3 +19,8 @@ table{
     margin-top: 10px;
    width: 1200px;
 }
+
+.requiredSign{
+    font-weight: bold;
+    color: red;
+}
