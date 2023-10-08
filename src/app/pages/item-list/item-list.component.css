@@ -1,0 +1,21 @@
+.addCategory{
+background-color:  rgb(132, 132, 234);
+border: none;
+border-radius: 10px;
+margin-left: 20px;
+}
+
+.addCategorys{
+margin-left: 20px;
+margin-right: 20px;    
+}
+th{
+background-color:rgb(132, 132, 234);
+
+
+}
+
+table{
+    margin-top: 10px;
+   width: 1200px;
+}

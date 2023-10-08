@@ -1,0 +1,20 @@
+h4{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.item{
+    margin-left: 20px;
+    margin-top: 300px;
+    text-decoration: none;
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+    background-color: rgb(132, 132, 234);
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    
+}
