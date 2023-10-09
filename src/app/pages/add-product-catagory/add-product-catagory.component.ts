@@ -30,14 +30,6 @@ export class AddProductCategoryComponent implements OnInit{
       seuquence_number:new FormControl(''),
       status:new FormControl(),
     })
-   
-    // this.cateGoryForm = this.fb.group({
-    //   id:'',
-    //   english_name:'',
-    //   bangla_name:'',
-    //   seuquence_number:'',
-    //   // status:'',
-    // })
 
     this.cateGorService.getCategory(this.cateGory).subscribe((res:any)=>{
       this.cateGoryList = res;    
@@ -48,7 +40,7 @@ export class AddProductCategoryComponent implements OnInit{
 
   submit(){
   this.cateGorService.postCategory(this.cateGoryForm.value).subscribe(() => {alert("success")})
-  this.ngOnInit();
+  window.location.reload();
   }
 
 

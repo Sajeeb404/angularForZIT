@@ -10,6 +10,28 @@
       Add New
     </button>
   </div>
+
+
+   <!-- upper pagination start -->   
+   <div class="pull-right" style="float: right; margin-right: 70px;">
+    <nav aria-label="...">
+      <ul class="pagination">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1"><b> Previous</b></a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item ">
+          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#"><b> Next</b></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- upper pagination end -->
+
 <!-- this is list div start from hare -->
   <div class="addCategorys">
     <table>
@@ -39,6 +61,26 @@
     </table>
   </div>
   <!-- this is list div end hare -->
+
+  <!-- lower pagination start -->   
+  <div class="pull-right" style="float: right; margin-right: 70px;">
+    <nav aria-label="...">
+      <ul class="pagination">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1"><b> Previous</b></a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item ">
+          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#"><b> Next</b></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- lower pagination end -->
 </div>
 
 
@@ -109,7 +151,11 @@
               Reset
             </a>
 
-            <button type="submit" class="btn btn-dark shadow-none" style="float: right; margin-bottom: 10px;">
+            <button             
+            data-bs-dismiss="modal"
+            aria-label="Close" 
+            type="submit" class="btn btn-dark shadow-none" 
+            style="float: right; margin-bottom: 10px;">
               Submit
             </button>
 
