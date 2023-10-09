@@ -1,6 +1,4 @@
-
 <div>
-
   <div>
     <button
       data-bs-toggle="modal"
@@ -11,17 +9,18 @@
     </button>
   </div>
 
-
-   <!-- upper pagination start -->   
-   <div class="pull-right" style="float: right; margin-right: 70px;">
+  <!-- upper pagination start -->
+  <div class="pull-right" style="float: right; margin-right: 70px">
     <nav aria-label="...">
       <ul class="pagination">
         <li class="page-item disabled">
           <a class="page-link" href="#" tabindex="-1"><b> Previous</b></a>
         </li>
         <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item ">
-          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+        <li class="page-item">
+          <a class="page-link" href="#"
+            >2 <span class="sr-only">(current)</span></a
+          >
         </li>
         <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item">
@@ -32,7 +31,8 @@
   </div>
   <!-- upper pagination end -->
 
-<!-- this is list div start from hare -->
+
+  <!-- this is list div start from hare -->
   <div class="addCategorys">
     <table>
       <tr>
@@ -44,34 +44,49 @@
         <th>Action</th>
       </tr>
       <tr *ngFor="let v of cateGoryList">
-        <td>{{v.id}}</td>
-        <td>{{v.english_name}}</td>
-        <td>{{v.bangla_name}}</td>
-        <td>{{v.seuquence_number}}</td>
-        <td>{{v.status}}</td>
+        <td>{{ v.id }}</td>
+        <td>{{ v.english_name }}</td>
+        <td>{{ v.bangla_name }}</td>
+        <td>{{ v.seuquence_number }}</td>
+        <td>{{ v.status }}</td>
         <td>
-          <button (click)="getById(v)" data-bs-toggle="modal"
-          data-bs-target="#editModal"> <i class="fas fa-edit"></i></button>
+          <button
+            (click)="getById(v)"
+            data-bs-toggle="modal"
+            data-bs-target="#editModal"
+          >
+            <i class="fas fa-edit"></i>
+          </button>
 
-          <button (click)="getById(v)" data-bs-toggle="modal"
-          data-bs-target="#viewModal"><i class="fa fa-eye" aria-hidden="true"></i></button>
-          <button (click)="delete(v.id)"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+          <button
+            (click)="getById(v)"
+            data-bs-toggle="modal"
+            data-bs-target="#viewModal"
+          >
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          </button>
+          <button (click)="delete(v.id)">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
         </td>
       </tr>
     </table>
   </div>
   <!-- this is list div end hare -->
 
-  <!-- lower pagination start -->   
-  <div class="pull-right" style="float: right; margin-right: 70px;">
+  <br />
+  <!-- lower pagination start -->
+  <div class="pull-right" style="float: right; margin-right: 70px">
     <nav aria-label="...">
       <ul class="pagination">
         <li class="page-item disabled">
           <a class="page-link" href="#" tabindex="-1"><b> Previous</b></a>
         </li>
         <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item ">
-          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+        <li class="page-item">
+          <a class="page-link" href="#"
+            >2 <span class="sr-only">(current)</span></a
+          >
         </li>
         <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item">
@@ -81,7 +96,9 @@
     </nav>
   </div>
   <!-- lower pagination end -->
+  
 </div>
+
 
 
 <!-- this add product category block start from hare -->
@@ -99,22 +116,26 @@
       <form [formGroup]="cateGoryForm" (ngSubmit)="submit()">
         <div class="modal-header">
           <h5 class="modal-title d-flex align-items-center">
-            <i class="bi bi-person-lines-fill fs-3 me-2"></i>Add Product Category
+            <i class="bi bi-person-lines-fill fs-3 me-2"></i>Add Product
+            Category
           </h5>
 
-          <button #myButton
+          <button
+            #myButton
             type="reset"
             class="btn-close shadow-none"
             data-bs-dismiss="modal"
             aria-label="Close"
           ></button>
-
         </div>
         <div class="modal-body">
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label">Product Category Name <span class="requiredSign" >*</span></label>
+                <label class="form-label"
+                  >Product Category Name
+                  <span class="requiredSign">*</span></label
+                >
                 <input
                   type="text"
                   class="form-control shadow-none"
@@ -123,42 +144,48 @@
                 />
               </div>
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" > Product Category Name BN <span class="requiredSign" >*</span></label>
+                <label class="form-label">
+                  Product Category Name BN
+                  <span class="requiredSign">*</span></label
+                >
                 <input
                   type="text"
                   class="form-control shadow-none"
                   name="bangla_name"
                   formControlName="bangla_name"
-
                 />
               </div>
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" >Sequence Number <span class="requiredSign" >*</span></label>
+                <label class="form-label"
+                  >Sequence Number <span class="requiredSign">*</span></label
+                >
                 <input
                   type="text"
                   class="form-control shadow-none"
                   name="seuquence_number"
                   formControlName="seuquence_number"
-
                 />
               </div>
-
             </div>
           </div>
           <div class="text-center my-1">
-
-            <a (click)="ngOnInit()" class="btn btn-dark shadow-none" style="float: left; margin-bottom: 10px;">
+            <a
+              (click)="ngOnInit()"
+              class="btn btn-dark shadow-none"
+              style="float: left; margin-bottom: 10px"
+            >
               Reset
             </a>
 
-            <button             
-            data-bs-dismiss="modal"
-            aria-label="Close" 
-            type="submit" class="btn btn-dark shadow-none" 
-            style="float: right; margin-bottom: 10px;">
+            <button
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              type="submit"
+              class="btn btn-dark shadow-none"
+              style="float: right; margin-bottom: 10px"
+            >
               Submit
             </button>
-
           </div>
         </div>
       </form>
@@ -181,51 +208,74 @@
 >
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <form [formGroup]="cateGoryForm" >
+      <form [formGroup]="cateGoryForm">
         <div class="modal-header">
           <h5 class="modal-title d-flex align-items-center">
-            <i class="bi bi-person-lines-fill fs-3 me-2"></i>View Product Category
+            <i class="bi bi-person-lines-fill fs-3 me-2"></i>View Product
+            Category
           </h5>
 
-          <button #myButton
+          <button
+            #myButton
             type="reset"
             class="btn-close shadow-none"
             data-bs-dismiss="modal"
             aria-label="Close"
           ></button>
-
         </div>
         <div class="modal-body">
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-6 ps-0 mb-3">
                 <label class="form-label">Product Category Id </label>
-                <input readonly class="form-control shadow-none" type="text" formControlName="id">
+                <input
+                  readonly
+                  class="form-control shadow-none"
+                  type="text"
+                  formControlName="id"
+                />
               </div>
 
               <div class="col-md-6 ps-0 mb-3">
                 <label class="form-label">Product Category Name </label>
-                <input readonly class="form-control shadow-none" type="text" formControlName="english_name">
+                <input
+                  readonly
+                  class="form-control shadow-none"
+                  type="text"
+                  formControlName="english_name"
+                />
               </div>
 
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" > Product Category Name BN </label>
-                <input readonly class="form-control shadow-none" type="text" formControlName="bangla_name">
+                <label class="form-label"> Product Category Name BN </label>
+                <input
+                  readonly
+                  class="form-control shadow-none"
+                  type="text"
+                  formControlName="bangla_name"
+                />
               </div>
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" >Sequence Number</label>
-                <input readonly class="form-control shadow-none" type="text" formControlName="seuquence_number">
+                <label class="form-label">Sequence Number</label>
+                <input
+                  readonly
+                  class="form-control shadow-none"
+                  type="text"
+                  formControlName="seuquence_number"
+                />
               </div>
 
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" >Status</label>
-                <input readonly class="form-control shadow-none" type="text" formControlName="status">
-
+                <label class="form-label">Status</label>
+                <input
+                  readonly
+                  class="form-control shadow-none"
+                  type="text"
+                  formControlName="status"
+                />
               </div>
-
             </div>
           </div>
-
         </div>
       </form>
     </div>
@@ -236,7 +286,6 @@
 
 
 <!-- this edit update product category block start from hare -->
-
 <div
   class="modal fade"
   id="editModal"
@@ -251,57 +300,74 @@
       <form [formGroup]="cateGoryForm" (ngSubmit)="submit()">
         <div class="modal-header">
           <h5 class="modal-title d-flex align-items-center">
-            <i class="bi bi-person-lines-fill fs-3 me-2"></i>Update Product Category
+            <i class="bi bi-person-lines-fill fs-3 me-2"></i>Update Product
+            Category
           </h5>
 
-          <button 
+          <button
             type="reset"
             class="btn-close shadow-none"
             data-bs-dismiss="modal"
             aria-label="Close"
           ></button>
-
         </div>
         <div class="modal-body">
           <div class="container-fluid">
             <div class="row">
-
               <div class="col-md-6 ps-0 mb-3">
                 <label class="form-label">Product Category Name </label>
-                <input class="form-control shadow-none" type="text" formControlName="english_name">
+                <input
+                  class="form-control shadow-none"
+                  type="text"
+                  formControlName="english_name"
+                />
               </div>
 
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" > Product Category Name BN </label>
-                <input class="form-control shadow-none" type="text" formControlName="bangla_name">
+                <label class="form-label"> Product Category Name BN </label>
+                <input
+                  class="form-control shadow-none"
+                  type="text"
+                  formControlName="bangla_name"
+                />
               </div>
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" >Sequence Number</label>
-                <input class="form-control shadow-none" type="text" formControlName="seuquence_number">
+                <label class="form-label">Sequence Number</label>
+                <input
+                  class="form-control shadow-none"
+                  type="text"
+                  formControlName="seuquence_number"
+                />
               </div>
 
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" >Status</label><br>
-                <input type="radio" name="status" formControlName="status" value="Active"> Active
-                <input type="radio" name="status"  formControlName="status" value="Deactive"> Deactive
-
+                <label class="form-label">Status</label><br />
+                <input
+                  type="radio"
+                  name="status"
+                  formControlName="status"
+                  value="Active"
+                />
+                Active
+                <input
+                  type="radio"
+                  name="status"
+                  formControlName="status"
+                  value="Deactive"
+                />
+                Deactive
               </div>
-
             </div>
           </div>
 
           <div class="text-center my-1">
-
-            <button type="submit" class="btn btn-dark shadow-none" >
+            <button type="submit" class="btn btn-dark shadow-none">
               Update
             </button>
-
           </div>
-
         </div>
       </form>
     </div>
   </div>
 </div>
-
 <!-- this edit update product category block end hare -->
