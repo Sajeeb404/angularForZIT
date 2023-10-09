@@ -4,7 +4,7 @@
   <div>
     <button
       data-bs-toggle="modal"
-      data-bs-target="#signupModal"
+      data-bs-target="#addModal"
       class="addCategory"
     >
       Add New
@@ -21,21 +21,19 @@
         <th>Status</th>
         <th>Action</th>
       </tr>
-      <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-      </tr>
-      <tr>
-        <td>Centro comercial Moctezuma</td>
-        <td>Francisco Chang</td>
-        <td>Mexico</td>
-        <td>Centro comercial Moctezuma</td>
-        <td>Francisco Chang</td>
+      <tr *ngFor="let v of cateGoryList">
+        <td>{{v.id}}</td>
+        <td>{{v.english_name}}</td>
+        <td>{{v.bangla_name}}</td>
+        <td>{{v.seuquence_number}}</td>
+        <td>{{v.status}}</td>
         <td>
-          <button > <i class="fas fa-edit"></i></button>
-          <button><i class="fa fa-eye" aria-hidden="true"></i></button>
-          <button> <i class="fa fa-trash" aria-hidden="true"></i></button>
+          <button (click)="getById(v)" data-bs-toggle="modal"
+          data-bs-target="#editModal"> <i class="fas fa-edit"></i></button>
+
+          <button (click)="getById(v)" data-bs-toggle="modal"
+          data-bs-target="#viewModal"><i class="fa fa-eye" aria-hidden="true"></i></button>
+          <button (click)="delete(v.id)"> <i class="fa fa-trash" aria-hidden="true"></i></button>
         </td>
       </tr>
     </table>
@@ -47,7 +45,7 @@
 <!-- this add product category block start from hare -->
 <div
   class="modal fade"
-  id="signupModal"
+  id="addModal"
   data-bs-backdrop="static"
   data-bs-keyboard="false"
   tabindex="-1"
@@ -56,46 +54,50 @@
 >
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <form name="form">
+      <form [formGroup]="cateGoryForm" (ngSubmit)="submit()">
         <div class="modal-header">
           <h5 class="modal-title d-flex align-items-center">
             <i class="bi bi-person-lines-fill fs-3 me-2"></i>Add Product Category
           </h5>
-          <button
+
+          <button #myButton
             type="reset"
             class="btn-close shadow-none"
             data-bs-dismiss="modal"
             aria-label="Close"
           ></button>
+
         </div>
         <div class="modal-body">
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" for="">Product Category Name <span class="requiredSign" >*</span></label>
+                <label class="form-label">Product Category Name <span class="requiredSign" >*</span></label>
                 <input
                   type="text"
                   class="form-control shadow-none"
-                  name=""
-                  id=""
+                  name="english_name"
+                  formControlName="english_name"
                 />
               </div>
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" for=""> Product Category Name BN <span class="requiredSign" >*</span></label>
+                <label class="form-label" > Product Category Name BN <span class="requiredSign" >*</span></label>
                 <input
                   type="text"
                   class="form-control shadow-none"
-                  name=""
-                  id=""
+                  name="bangla_name"
+                  formControlName="bangla_name"
+
                 />
               </div>
               <div class="col-md-6 ps-0 mb-3">
-                <label class="form-label" for="">Sequence Number <span class="requiredSign" >*</span></label>
+                <label class="form-label" >Sequence Number <span class="requiredSign" >*</span></label>
                 <input
-                  type="email"
+                  type="text"
                   class="form-control shadow-none"
-                  name=""
-                  id=""
+                  name="seuquence_number"
+                  formControlName="seuquence_number"
+
                 />
               </div>
 
@@ -103,9 +105,9 @@
           </div>
           <div class="text-center my-1">
 
-            <button type="submit" class="btn btn-dark shadow-none" style="float: left; margin-bottom: 10px;">
+            <a (click)="ngOnInit()" class="btn btn-dark shadow-none" style="float: left; margin-bottom: 10px;">
               Reset
-            </button>
+            </a>
 
             <button type="submit" class="btn btn-dark shadow-none" style="float: right; margin-bottom: 10px;">
               Submit
@@ -118,3 +120,142 @@
   </div>
 </div>
 <!-- this add product category block end hare -->
+
+
+
+<!-- this view product category block start from hare -->
+<div
+  class="modal fade"
+  id="viewModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form [formGroup]="cateGoryForm" >
+        <div class="modal-header">
+          <h5 class="modal-title d-flex align-items-center">
+            <i class="bi bi-person-lines-fill fs-3 me-2"></i>View Product Category
+          </h5>
+
+          <button #myButton
+            type="reset"
+            class="btn-close shadow-none"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 ps-0 mb-3">
+                <label class="form-label">Product Category Id </label>
+                <input readonly class="form-control shadow-none" type="text" formControlName="id">
+              </div>
+
+              <div class="col-md-6 ps-0 mb-3">
+                <label class="form-label">Product Category Name </label>
+                <input readonly class="form-control shadow-none" type="text" formControlName="english_name">
+              </div>
+
+              <div class="col-md-6 ps-0 mb-3">
+                <label class="form-label" > Product Category Name BN </label>
+                <input readonly class="form-control shadow-none" type="text" formControlName="bangla_name">
+              </div>
+              <div class="col-md-6 ps-0 mb-3">
+                <label class="form-label" >Sequence Number</label>
+                <input readonly class="form-control shadow-none" type="text" formControlName="seuquence_number">
+              </div>
+
+              <div class="col-md-6 ps-0 mb-3">
+                <label class="form-label" >Status</label>
+                <input readonly class="form-control shadow-none" type="text" formControlName="status">
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- this view product category block end hare -->
+
+
+
+<!-- this edit update product category block start from hare -->
+
+<div
+  class="modal fade"
+  id="editModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form [formGroup]="cateGoryForm" (ngSubmit)="submit()">
+        <div class="modal-header">
+          <h5 class="modal-title d-flex align-items-center">
+            <i class="bi bi-person-lines-fill fs-3 me-2"></i>Update Product Category
+          </h5>
+
+          <button 
+            type="reset"
+            class="btn-close shadow-none"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+
+              <div class="col-md-6 ps-0 mb-3">
+                <label class="form-label">Product Category Name </label>
+                <input class="form-control shadow-none" type="text" formControlName="english_name">
+              </div>
+
+              <div class="col-md-6 ps-0 mb-3">
+                <label class="form-label" > Product Category Name BN </label>
+                <input class="form-control shadow-none" type="text" formControlName="bangla_name">
+              </div>
+              <div class="col-md-6 ps-0 mb-3">
+                <label class="form-label" >Sequence Number</label>
+                <input class="form-control shadow-none" type="text" formControlName="seuquence_number">
+              </div>
+
+              <div class="col-md-6 ps-0 mb-3">
+                <label class="form-label" >Status</label><br>
+                <input type="radio" name="status" formControlName="status" value="Active"> Active
+                <input type="radio" name="status"  formControlName="status" value="Deactive"> Deactive
+
+              </div>
+
+            </div>
+          </div>
+
+          <div class="text-center my-1">
+
+            <button type="submit" class="btn btn-dark shadow-none" >
+              Update
+            </button>
+
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- this edit update product category block end hare -->
