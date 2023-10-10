@@ -43,8 +43,8 @@
   <div  class="addCategorys">
     <table border="1">
       <tr >
-        <th>Product Category Id</th>
-        <th>Product Category Name</th>
+        <th >Product Category Id &nbsp;<i class="fas fa-sort-up" (click)="descendingShort()"></i>&nbsp;<i class="fa fa-sort-down" (click)="aescendingShort()" ></i></th>
+        <th>Product Category Name </th>
         <th>Product Category Name BN</th>
         <th>Sequence NUmber</th>
         <th>Status</th>
@@ -173,6 +173,8 @@
                   class="form-control shadow-none"
                   name="english_name"
                   formControlName="english_name"
+                  required
+                  
                 />
               </div>
               <div class="col-md-6 ps-0 mb-3">
@@ -185,6 +187,7 @@
                   class="form-control shadow-none"
                   name="bangla_name"
                   formControlName="bangla_name"
+                  required
                 />
               </div>
               <div class="col-md-6 ps-0 mb-3">
@@ -196,6 +199,7 @@
                   class="form-control shadow-none"
                   name="seuquence_number"
                   formControlName="seuquence_number"
+                  required
                 />
               </div>
             </div>

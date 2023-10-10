@@ -39,6 +39,7 @@ export class AddProductCategoryComponent implements OnInit{
 
 
   submit(){
+
   this.cateGorService.postCategory(this.cateGoryForm.value).subscribe(() => {alert("success")})
   window.location.reload();
   }
@@ -72,17 +73,23 @@ export class AddProductCategoryComponent implements OnInit{
 
 
   
+  descendingShort(){
+this.cateGoryList.sort((a, b) => b.id - a.id);
+  }
 
+  aescendingShort(){
+    this.cateGoryList.sort((a, b) => a.id - b.id);
+      }
 
 
   UserListSearch:any;
   oderHeader:string="";
   isDescOrder:boolean=true;
 
-  sort(headerName:string){
-    this.isDescOrder= !this.isDescOrder;
-  this.oderHeader=headerName; 
-  }
+
+
+
+
 
   title ='pagination'
 POSTS:any;
