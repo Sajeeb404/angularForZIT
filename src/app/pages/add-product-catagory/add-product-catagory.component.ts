@@ -18,7 +18,7 @@ export class AddProductCategoryComponent implements OnInit{
   cateGoryForm!:FormGroup;
   cateGoryList!:CateGoryModel[];
 
-
+  
     constructor(private router:Router, private fb: FormBuilder, private cateGorService:AddproductCategoryService){}
 
      ngOnInit(): void {
@@ -75,6 +75,30 @@ export class AddProductCategoryComponent implements OnInit{
 
 
 
+  UserListSearch:any;
+  oderHeader:string="";
+  isDescOrder:boolean=true;
+
+  sort(headerName:string){
+    this.isDescOrder= !this.isDescOrder;
+  this.oderHeader=headerName; 
+  }
+
+  title ='pagination'
+POSTS:any;
+page:number =1;
+count:number =0;
+tableSize:number =5;
+tableSizes:any=[5,10,15,20];
+
+onTableSizechange(event:any){
+  this.page= event;
+  this.cateGoryList;
+}
+
+pagenUmber(){
+  this.tableSize
+}
   
 
   

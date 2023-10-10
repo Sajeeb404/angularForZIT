@@ -10,32 +10,39 @@
   </div>
 
   <!-- upper pagination start -->
-  <div class="pull-right" style="float: right; margin-right: 70px">
-    <nav aria-label="...">
-      <ul class="pagination">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1"><b> Previous</b></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#"
-            >2 <span class="sr-only">(current)</span></a
-          >
-        </li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#"><b> Next</b></a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+<br>
+  <div>
+  
+    <div style="float: left; margin-left: 20px;">
+      <label for="">Length
+        <select name="" id="" [(ngModel)]="tableSize" (change)="pagenUmber()">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="">All</option>
+        </select>
+        
+      </label>
+    </div>
+    
+    
+    <div style="float: right; margin-right: 30px;">
+      <pagination-controls style="font-size: 20px; font-weight: bold;"
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableSizechange($event)"
+      >
+    
+      </pagination-controls>
+    </div>
+    </div>
   <!-- upper pagination end -->
 
 
   <!-- this is list div start from hare -->
-  <div class="addCategorys">
-    <table>
-      <tr>
+  <div  class="addCategorys">
+    <table border="1">
+      <tr >
         <th>Product Category Id</th>
         <th>Product Category Name</th>
         <th>Product Category Name BN</th>
@@ -43,7 +50,16 @@
         <th>Status</th>
         <th>Action</th>
       </tr>
-      <tr *ngFor="let v of cateGoryList">
+      <tr      
+        
+        *ngFor="let v of cateGoryList | paginate:{
+          itemsPerPage:tableSize,
+          currentPage:page,
+         totalItems:count
+          };
+          let i= index "
+        
+        >
         <td>{{ v.id }}</td>
         <td>{{ v.english_name }}</td>
         <td>{{ v.bangla_name }}</td>
@@ -54,6 +70,7 @@
             (click)="getById(v)"
             data-bs-toggle="modal"
             data-bs-target="#editModal"
+            style="color: rgb(50, 220, 50);"
           >
             <i class="fas fa-edit"></i>
           </button>
@@ -62,10 +79,11 @@
             (click)="getById(v)"
             data-bs-toggle="modal"
             data-bs-target="#viewModal"
+            style="color: rgb(132, 132, 234);;"
           >
             <i class="fa fa-eye" aria-hidden="true"></i>
           </button>
-          <button (click)="delete(v.id)">
+          <button (click)="delete(v.id)" style="color: red;"> 
             <i class="fa fa-trash" aria-hidden="true"></i>
           </button>
         </td>
@@ -75,26 +93,40 @@
   <!-- this is list div end hare -->
 
   <br />
+
+
   <!-- lower pagination start -->
-  <div class="pull-right" style="float: right; margin-right: 70px">
-    <nav aria-label="...">
-      <ul class="pagination">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1"><b> Previous</b></a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#"
-            >2 <span class="sr-only">(current)</span></a
-          >
-        </li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#"><b> Next</b></a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+
+  <div>
+  
+    <div style="float: left; margin-left: 20px; margin-bottom: 100px;">
+      <label for="">Length
+        <select name="" id="" [(ngModel)]="tableSize" (change)="pagenUmber()">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="">All</option>
+        </select>
+        
+      </label>
+    </div>
+    
+    
+    <div style="float: right; margin-right: 30px;" >
+      <pagination-controls style="font-size: 20px; font-weight: bold;"
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableSizechange($event)"
+      >
+    
+      </pagination-controls>
+    </div>
+    </div>
+
+
+
+  
+
   <!-- lower pagination end -->
   
 </div>
@@ -115,7 +147,7 @@
     <div class="modal-content">
       <form [formGroup]="cateGoryForm" (ngSubmit)="submit()">
         <div class="modal-header">
-          <h5 class="modal-title d-flex align-items-center">
+          <h5 class="modal-title d-flex align-items-center" style="margin-left: 270px; font-weight: bold;">
             <i class="bi bi-person-lines-fill fs-3 me-2"></i>Add Product
             Category
           </h5>
@@ -210,7 +242,7 @@
     <div class="modal-content">
       <form [formGroup]="cateGoryForm">
         <div class="modal-header">
-          <h5 class="modal-title d-flex align-items-center">
+          <h5 class="modal-title d-flex align-items-center" style="margin-left: 270px; font-weight: bold;">
             <i class="bi bi-person-lines-fill fs-3 me-2"></i>View Product
             Category
           </h5>
@@ -299,7 +331,7 @@
     <div class="modal-content">
       <form [formGroup]="cateGoryForm" (ngSubmit)="submit()">
         <div class="modal-header">
-          <h5 class="modal-title d-flex align-items-center">
+          <h5 class="modal-title d-flex align-items-center" style="margin-left: 270px; font-weight: bold;">
             <i class="bi bi-person-lines-fill fs-3 me-2"></i>Update Product
             Category
           </h5>
